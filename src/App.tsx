@@ -1,14 +1,10 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  color: #8257e6;
-`
+import { GlobalStyle } from "./styles/global";
 
 export function App() { // Quem import não consegue mudar o nome sem usar o "as", autocomplete mias inteligente
   return (
     <div className="App">
-      <Title>HelloWorld</Title>
-      
+      <h1>HelloWorld</h1>
+      <GlobalStyle />
     </div>
   );
 }
