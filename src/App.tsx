@@ -4,6 +4,7 @@ import { GlobalStyle } from "./styles/global";
 import Modal from 'react-modal';
 import { useState } from "react";
 import { NewTransactionModal } from "./components/NewTransactionModal";
+import { TransactionsContext, TransactionsProvider } from './TransactionsContext'
 
 export function App() { // Quem import não consegue mudar o nome sem usar o "as", autocomplete mias inteligente
 
@@ -21,8 +22,7 @@ export function App() { // Quem import não consegue mudar o nome sem usar o "as
     }
 
   return (
-    <div className="App">
-      <>
+      <TransactionsProvider>
         <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
         <Dashboard />      
         <NewTransactionModal 
@@ -30,7 +30,6 @@ export function App() { // Quem import não consegue mudar o nome sem usar o "as
           onRequestClose={handleCloseNewTransactionModal}
         />
         <GlobalStyle />
-      </>
-    </div>
+      </TransactionsProvider>
   );
 }
