@@ -31,8 +31,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<Transaction[]>([])
 
     useEffect(() => {
-        api.get('transactions')
-        .then(response => setTransactions(response.data.transactions))
+        api.get('transactions/get-all', {
+            params: {
+                pageSize: 999,
+                pageNumber:1
+            }
+        })
+        .then(({data}) => setTransactions(data.data))
     }, []);
     
     async function createTransaction(transactionInput: TransactionInput) {   
